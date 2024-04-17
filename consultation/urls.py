@@ -7,12 +7,12 @@ from.import views
 urlpatterns = [
 
 
-
+    path('', views.index,name="index"),
     path('forgot_password',views.forgot_password,name='forgot_password'),
     path('enter_otp',views.enter_otp,name='enter_otp'),
     path('new_password',views.new_password,name='new_password'),
 
-    path('', views.index,name="index"),
+   
     path('patient_index/', views.patient_index,name="patient_index"),
     path('doctor_index/', views.doctor_index,name="doctor_index"),
     path('seller_index/',views.seller_index,name="seller_index"),

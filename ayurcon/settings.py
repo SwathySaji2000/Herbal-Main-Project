@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-3069!r-dh-4_ea1#sg#$!^n!w!0vwp67=2b&7za8teq$%7o$p$
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []  # Allow all hosts for development, replace with actual domain(s) in production
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -16,13 +16,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'consultation'
+    'consultation',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -33,7 +34,7 @@ ROOT_URLCONF = 'ayurcon.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -51,12 +52,12 @@ WSGI_APPLICATION = 'ayurcon.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR / 'db.sqlite3'),
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Collect static files for deployment
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -68,7 +69,5 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'swathysaji143@gmail.com'
 EMAIL_HOST_PASSWORD = 'xrqkarutlvawpoba'
 
-RAZORPAY_KEY_ID = 'rzp_test_DMUK9SVlpwVfnB'
-RAZORPAY_KEY_SECRET = 'J91T4HYYFZj6foK1QPi4mPZ'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

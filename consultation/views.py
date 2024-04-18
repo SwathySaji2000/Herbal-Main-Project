@@ -109,9 +109,6 @@ def forgot_password(request):
 
 
 
-
-
-
 def index(request):
     return render(request, 'indexmain.html')
 
